@@ -1,4 +1,5 @@
 import 'package:boujee/ui/screens/connexion_screen.dart';
+import 'package:boujee/ui/screens/screens.dart';
 import 'package:boujee/ui/themes/themes.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Boujee',
       debugShowCheckedModeBanner: false,
       theme: myTheme,
-      home: ConnexionScreen(),
+      home: OnboardingScreen(),
     );
   }
 }
-
