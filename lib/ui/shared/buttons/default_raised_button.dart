@@ -21,8 +21,7 @@ class DefaultRaisedButton extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: Container(
-          width: 314,
-          height: 70,
+          height: 65,
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: backgroundColor,

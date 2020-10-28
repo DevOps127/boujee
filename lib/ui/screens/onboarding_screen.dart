@@ -1,5 +1,5 @@
+import 'package:boujee/routes.dart';
 import 'package:boujee/ui/constants/colors.dart';
-import 'package:boujee/ui/screens/screens.dart';
 import 'package:boujee/ui/shared/buttons/default_raised_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -57,13 +57,13 @@ class OnboardingScreen extends StatelessWidget {
               ),
             ),
             Positioned(
-              left: 0,
-              right: 0,
+              left: 24,
+              right: 24,
               bottom: 16,
               child: Center(
                 child: DefaultRaisedButton(
                   onTap: () => Navigator.of(context)
-                      .pushNamed(ConnexionScreen.routeName),
+                      ?.pushNamed(RouteGenerator.connexionScreen),
                   text: 'Get started',
                   backgroundColor: AppColors.colorWhite,
                   textColor: AppColors.primaryColor,
