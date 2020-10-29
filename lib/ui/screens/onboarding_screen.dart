@@ -26,6 +26,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
+      resizeToAvoidBottomPadding: false,
       body: Stack(
         children: [
           Positioned(

@@ -28,51 +28,55 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
-      child: Form(
-        key: _formkey,
-        autovalidateMode: AutovalidateMode.always,
-        child: Padding(
-          padding:
-              const EdgeInsets.only(top: 30, left: 24, right: 24, bottom: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  DefaultTextField(
-                    focusNode: _emailFocusNode,
-                    validator: FormValidator.emailValidation,
-                    labelText: 'Email address',
-                    textInputType: TextInputType.emailAddress,
-                  ),
-                  const SpaceH16(),
-                  DefaultTextField(
-                    validator: FormValidator.passwordValidation,
-                    labelText: 'Password',
-                    obscureText: true,
-                  ),
-                  const SpaceH16(),
-                  FlatButton(
-                    onPressed: () {},
-                    padding: EdgeInsets.zero,
-                    child: const Text(
-                      'Forgot password?',
-                      style: TextStyle(
-                        color: AppColors.primaryColor,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 17,
+    return Scrollbar(
+      child: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Form(
+          key: _formkey,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          child: Padding(
+            padding:
+                const EdgeInsets.only(top: 30, left: 24, right: 24, bottom: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    DefaultTextField(
+                      focusNode: _emailFocusNode,
+                      validator: FormValidator.emailValidation,
+                      labelText: 'Email address',
+                      textInputType: TextInputType.emailAddress,
+                    ),
+                    const SpaceH16(),
+                    DefaultTextField(
+                      validator: FormValidator.passwordValidation,
+                      labelText: 'Password',
+                      obscureText: true,
+                    ),
+                    const SpaceH16(),
+                    FlatButton(
+                      onPressed: () {},
+                      padding: EdgeInsets.zero,
+                      child: const Text(
+                        'Forgot password?',
+                        style: TextStyle(
+                          color: AppColors.primaryColor,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 17,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              DefaultRaisedButton(onTap: _login, text: 'Login')
-            ],
+                  ],
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * .14,
+                ),
+                DefaultRaisedButton(onTap: _login, text: 'Login')
+              ],
+            ),
           ),
         ),
       ),

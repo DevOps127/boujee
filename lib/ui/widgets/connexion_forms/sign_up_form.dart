@@ -25,41 +25,48 @@ class _SignUpFormState extends State<SignUpForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      child: Padding(
-        padding:
-            const EdgeInsets.only(top: 30, left: 24, right: 24, bottom: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Column(
+    return Scrollbar(
+      child: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Form(
+          key: _formKey,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          child: Padding(
+            padding:
+                const EdgeInsets.only(top: 30, left: 24, right: 24, bottom: 16),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
               children: [
-                DefaultTextField(
-                  labelText: 'User name',
-                  validator: FormValidator.usernameValidation,
-                  textInputType: TextInputType.emailAddress,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    DefaultTextField(
+                      labelText: 'User name',
+                      validator: FormValidator.usernameValidation,
+                      textInputType: TextInputType.emailAddress,
+                    ),
+                    const SpaceH16(),
+                    DefaultTextField(
+                      labelText: 'Email address',
+                      validator: FormValidator.emailValidation,
+                      textInputType: TextInputType.emailAddress,
+                    ),
+                    const SpaceH16(),
+                    DefaultTextField(
+                      labelText: 'Password',
+                      validator: FormValidator.passwordValidation,
+                      obscureText: true,
+                    ),
+                  ],
                 ),
-                const SpaceH16(),
-                DefaultTextField(
-                  labelText: 'Email address',
-                  validator: FormValidator.emailValidation,
-                  textInputType: TextInputType.emailAddress,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * .12,
                 ),
-                const SpaceH16(),
-                DefaultTextField(
-                  labelText: 'Password',
-                  validator: FormValidator.passwordValidation,
-                  obscureText: true,
-                ),
+                DefaultRaisedButton(onTap: _register, text: 'Sign-up'),
               ],
             ),
-            Spacer(),
-            DefaultRaisedButton(onTap: _register, text: 'Sign-up'),
-          ],
+          ),
         ),
       ),
     );
