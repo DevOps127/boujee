@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class ConnexionScreen extends StatefulWidget {
-
   const ConnexionScreen({Key key}) : super(key: key);
 
   @override
@@ -23,19 +22,19 @@ class _ConnexionScreenState extends State<ConnexionScreen>
     super.initState();
 
     _tabController = TabController(length: 2, vsync: this);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: AppColors.colorWhite,
+      systemNavigationBarColor: AppColors.scaffoldBackgroundColor,
+    ));
   }
 
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion(
-      value: SystemUiOverlayStyle(
-        statusBarColor: AppColors.colorWhite,
-        systemNavigationBarColor: AppColors.scaffoldBackgroundColor,
-      ),
-      child: Scaffold(
-        //   resizeToAvoidBottomPadding: false,
-        resizeToAvoidBottomInset: false,
-        body: Column(
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: AnnotatedRegion(
+        value: SystemUiOverlayStyle.dark,
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             _TopContainerWidget(tabController: _tabController),

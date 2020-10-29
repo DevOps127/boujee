@@ -4,14 +4,28 @@ import 'package:boujee/ui/shared/default_textfield/default_textfield.dart';
 import 'package:boujee/ui/shared/spacers/spacers.dart';
 import 'package:flutter/material.dart';
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends StatefulWidget {
   const LoginForm({
     Key key,
   }) : super(key: key);
 
   @override
+  _LoginFormState createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  final _formkey = GlobalKey<FormState>();
+
+  void _login() {
+    final _isValid = _formkey.currentState.validate();
+
+    
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formkey,
       child: Padding(
         padding:
             const EdgeInsets.only(top: 30, left: 24, right: 24, bottom: 16),
