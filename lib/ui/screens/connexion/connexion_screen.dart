@@ -31,26 +31,23 @@ class _ConnexionScreenState extends State<ConnexionScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: AnnotatedRegion(
-        value: SystemUiOverlayStyle.dark,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            _TopContainerWidget(tabController: _tabController),
-            Flexible(
-              flex: 3,
-              child: TabBarView(
-                controller: _tabController,
-                physics: NeverScrollableScrollPhysics(),
-                children: [
-                  LoginForm(),
-                  SignUpForm(),
-                ],
-              ),
+      resizeToAvoidBottomInset: true,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          _TopContainerWidget(tabController: _tabController),
+          Flexible(
+            flex: 3,
+            child: TabBarView(
+              controller: _tabController,
+              physics: NeverScrollableScrollPhysics(),
+              children: [
+                LoginForm(),
+                SignUpForm(),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
