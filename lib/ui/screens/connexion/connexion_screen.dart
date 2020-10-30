@@ -112,34 +112,39 @@ class _ConnexionScreenState extends State<ConnexionScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      body: ModalProgressHUD(
-        inAsyncCall: _isLoading,
-        progressIndicator: CircularProgressIndicator(
-          valueColor:
-              const AlwaysStoppedAnimation<Color>(AppColors.primaryColor),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            _TopContainerWidget(tabController: _tabController),
-            Flexible(
-              flex: 3,
-              child: TabBarView(
-                controller: _tabController,
-                physics: NeverScrollableScrollPhysics(),
-                children: [
-                  LoginForm(
-                    loginUser: _loginUser,
-                    isLoading: _isLoading,
+      body: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.dark,
+        child: ModalProgressHUD(
+          inAsyncCall: _isLoading,
+          progressIndicator: CircularProgressIndicator(
+            valueColor:
+                const AlwaysStoppedAnimation<Color>(AppColors.primaryColor),
+          ),
+          child: SafeArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                _TopContainerWidget(tabController: _tabController),
+                Flexible(
+                  flex: 3,
+                  child: TabBarView(
+                    controller: _tabController,
+                    physics: NeverScrollableScrollPhysics(),
+                    children: [
+                      LoginForm(
+                        loginUser: _loginUser,
+                        isLoading: _isLoading,
+                      ),
+                      SignUpForm(
+                        registerUser: _registerUser,
+                        isLoading: _isLoading,
+                      ),
+                    ],
                   ),
-                  SignUpForm(
-                    registerUser: _registerUser,
-                    isLoading: _isLoading,
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
