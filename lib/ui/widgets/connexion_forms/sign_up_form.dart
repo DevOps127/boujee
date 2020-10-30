@@ -5,8 +5,13 @@ import 'package:boujee/ui/shared/spacers/spacers.dart';
 import 'package:flutter/material.dart';
 
 class SignUpForm extends StatefulWidget {
+  final bool isLoading;
+  final void Function(String email, String password, BuildContext context)
+      registerUser;
   const SignUpForm({
     Key key,
+    this.isLoading,
+    this.registerUser,
   }) : super(key: key);
 
   @override
@@ -15,11 +20,19 @@ class SignUpForm extends StatefulWidget {
 
 class _SignUpFormState extends State<SignUpForm> {
   final _formKey = GlobalKey<FormState>();
-  void _register() {
-    final _isValid = _formKey.currentState.validate();
+  var _userEmail = '';
+  var _userPassword = '';
 
-    if (_isValid) {
+  void _register() {
+    final isValid = _formKey.currentState.validate();
+    FocusScope.of(context).unfocus();
+    if (isValid) {
       _formKey.currentState.save();
+      widget.registerUser(
+        _userEmail.trim(),
+        _userPassword.trim(),
+        context,
+      );
     }
   }
 
@@ -45,17 +58,20 @@ class _SignUpFormState extends State<SignUpForm> {
                       labelText: 'User name',
                       validator: FormValidator.usernameValidation,
                       textInputType: TextInputType.emailAddress,
+                      onSaved: (val) => _userEmail = val,
                     ),
                     const SpaceH16(),
                     DefaultTextField(
                       labelText: 'Email address',
                       validator: FormValidator.emailValidation,
                       textInputType: TextInputType.emailAddress,
+                      onSaved: (val) => _userEmail = val,
                     ),
                     const SpaceH16(),
                     DefaultTextField(
                       labelText: 'Password',
                       validator: FormValidator.passwordValidation,
+                      onSaved: (val) => _userPassword = val,
                       obscureText: true,
                     ),
                   ],

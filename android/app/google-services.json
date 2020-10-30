@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "930025948205",
+    "firebase_url": "https://boujee-3aec6.firebaseio.com",
+    "project_id": "boujee-3aec6",
+    "storage_bucket": "boujee-3aec6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930025948205:android:87d62dcd97a64250ac64a4",
+        "android_client_info": {
+          "package_name": "com.example.boujee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930025948205-8qjiqcucck591q9t4l15r0uae8tqbrrr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZwBobkB9fahyOW-j4ZPkHXYGf9g1BtvY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "930025948205-8qjiqcucck591q9t4l15r0uae8tqbrrr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

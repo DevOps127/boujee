@@ -16,10 +16,10 @@ class DefaultRaisedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Material(
-        color: Colors.transparent,
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
         child: Container(
           height: 65,
           alignment: Alignment.center,

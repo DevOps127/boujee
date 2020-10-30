@@ -4,10 +4,16 @@ import 'package:boujee/ui/shared/buttons/default_raised_button.dart';
 import 'package:boujee/ui/shared/default_textfield/default_textfield.dart';
 import 'package:boujee/ui/shared/spacers/spacers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class LoginForm extends StatefulWidget {
+  final bool isLoading;
+  final void Function(String email, String password, BuildContext context)
+      loginUser;
   const LoginForm({
     Key key,
+    this.isLoading,
+    this.loginUser,
   }) : super(key: key);
 
   @override
@@ -18,11 +24,19 @@ class _LoginFormState extends State<LoginForm> {
   final _formkey = GlobalKey<FormState>();
   final _emailFocusNode = FocusNode();
 
-  void _login() {
-    final _isValid = _formkey.currentState.validate();
+  var _userEmail = '';
+  var _userPassword = '';
 
-    if (_isValid) {
+  void _login() {
+    final isValid = _formkey.currentState.validate();
+    FocusScope.of(context).unfocus();
+    if (isValid) {
       _formkey.currentState.save();
+      widget.loginUser(
+        _userEmail.trim(),
+        _userPassword.trim(),
+        context,
+      );
     }
   }
 
@@ -49,12 +63,14 @@ class _LoginFormState extends State<LoginForm> {
                       validator: FormValidator.emailValidation,
                       labelText: 'Email address',
                       textInputType: TextInputType.emailAddress,
+                      onSaved: (val) => _userEmail = val,
                     ),
                     const SpaceH16(),
                     DefaultTextField(
                       validator: FormValidator.passwordValidation,
                       labelText: 'Password',
                       obscureText: true,
+                      onSaved: (val) => _userPassword = val,
                     ),
                     const SpaceH16(),
                     FlatButton(
