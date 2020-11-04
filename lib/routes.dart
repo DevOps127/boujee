@@ -11,6 +11,8 @@ class RouteGenerator {
 
   RouteGenerator._();
 
+  static final key = GlobalKey<NavigatorState>();
+
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case onboardingScreen:

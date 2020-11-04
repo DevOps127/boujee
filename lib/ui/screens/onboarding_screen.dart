@@ -1,3 +1,4 @@
+import 'package:boujee/core/localization/app_localization.dart';
 import 'package:boujee/routes.dart';
 import 'package:boujee/ui/constants/colors.dart';
 import 'package:boujee/ui/shared/buttons/default_raised_button.dart';
@@ -24,6 +25,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final localize = AppLocalization.of(context);
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       resizeToAvoidBottomPadding: false,
@@ -46,7 +48,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'Food for\nEveryone',
+                  localize?.foodForEveryone ?? '-',
                   style: GoogleFonts.roboto(
                     color: AppColors.colorWhite,
                     fontWeight: FontWeight.w800,
@@ -74,7 +76,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               child: DefaultRaisedButton(
                 onTap: () => Navigator.of(context)
                     ?.pushNamed(RouteGenerator.connexionScreen),
-                text: 'Get started',
+                text: localize?.getStarted ?? '-',
                 backgroundColor: AppColors.colorWhite,
                 textColor: AppColors.primaryColor,
               ),

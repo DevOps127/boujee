@@ -1,0 +1,13 @@
+{
+  "@@last_modified": "2020-11-04T02:41:37.735787",
+  "foodForEveryone": "Food for\nEveryone",
+  "@foodForEveryone": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "getStarted": "Get started",
+  "@getStarted": {
+    "type": "text",
+    "placeholders": {}
+  }
+}
