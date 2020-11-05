@@ -1,3 +1,4 @@
+import 'package:boujee/core/localization/app_localization.dart';
 import 'package:boujee/core/services/form_validation.dart';
 import 'package:boujee/ui/shared/buttons/default_raised_button.dart';
 import 'package:boujee/ui/shared/default_textfield/default_textfield.dart';
@@ -38,6 +39,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
   @override
   Widget build(BuildContext context) {
+    final localize = AppLocalization.of(context);
     return Scrollbar(
       child: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
@@ -55,21 +57,21 @@ class _SignUpFormState extends State<SignUpForm> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     DefaultTextField(
-                      labelText: 'User name',
+                      labelText: localize?.translate('user_name') ?? '-',
                       validator: FormValidator.usernameValidation,
                       textInputType: TextInputType.emailAddress,
                       onSaved: (val) => _userEmail = val,
                     ),
                     const SpaceH16(),
                     DefaultTextField(
-                      labelText: 'Email address',
+                      labelText: localize?.translate('email_adress') ?? '-',
                       validator: FormValidator.emailValidation,
                       textInputType: TextInputType.emailAddress,
                       onSaved: (val) => _userEmail = val,
                     ),
                     const SpaceH16(),
                     DefaultTextField(
-                      labelText: 'Password',
+                      labelText: localize?.translate('password') ?? '-',
                       validator: FormValidator.passwordValidation,
                       onSaved: (val) => _userPassword = val,
                       obscureText: true,
@@ -79,7 +81,10 @@ class _SignUpFormState extends State<SignUpForm> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .12,
                 ),
-                DefaultRaisedButton(onTap: _register, text: 'Sign-up'),
+                DefaultRaisedButton(
+                  onTap: _register,
+                  text: localize?.translate('signUp') ?? '-',
+                ),
               ],
             ),
           ),

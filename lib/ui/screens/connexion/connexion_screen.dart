@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:boujee/core/localization/app_localization.dart';
 import 'package:boujee/ui/constants/colors.dart';
 import 'package:boujee/ui/widgets/connexion_forms/login_form.dart';
 import 'package:boujee/ui/widgets/connexion_forms/sign_up_form.dart';
@@ -209,6 +210,7 @@ class _TabBarWidget extends StatelessWidget {
       fontWeight: FontWeight.w600,
       letterSpacing: .7,
     );
+    final localize = AppLocalization.of(context);
     return Container(
       width: double.infinity,
       alignment: Alignment.bottomCenter,
@@ -220,13 +222,13 @@ class _TabBarWidget extends StatelessWidget {
         tabs: [
           Tab(
             child: Text(
-              'Login',
+              localize?.translate('login') ?? '',
               style: _kLabelStyle,
             ),
           ),
           Tab(
             child: Text(
-              'Sign-up',
+              localize?.translate('signUp') ?? '',
               style: _kLabelStyle,
             ),
           ),

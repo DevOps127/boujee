@@ -18,14 +18,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: myTheme,
       localizationsDelegates: [
-        const AppLocalizationDelegate(),
+        AppLocalization.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: [
         Locale.fromSubtags(languageCode: "en"),
-        Locale.fromSubtags(languageCode: "it"),
+        Locale.fromSubtags(languageCode: "fr"),
       ],
       onGenerateTitle: (context) => 'Boujee',
       navigatorKey: RouteGenerator.key,

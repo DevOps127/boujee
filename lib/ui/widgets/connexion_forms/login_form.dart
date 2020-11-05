@@ -1,3 +1,4 @@
+import 'package:boujee/core/localization/app_localization.dart';
 import 'package:boujee/core/services/form_validation.dart';
 import 'package:boujee/ui/constants/colors.dart';
 import 'package:boujee/ui/shared/buttons/default_raised_button.dart';
@@ -42,6 +43,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    final localize = AppLocalization.of(context);
     return Scrollbar(
       child: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
@@ -61,14 +63,14 @@ class _LoginFormState extends State<LoginForm> {
                     DefaultTextField(
                       focusNode: _emailFocusNode,
                       validator: FormValidator.emailValidation,
-                      labelText: 'Email address',
+                      labelText: localize?.translate('email_adress') ?? '-',
                       textInputType: TextInputType.emailAddress,
                       onSaved: (val) => _userEmail = val,
                     ),
                     const SpaceH16(),
                     DefaultTextField(
                       validator: FormValidator.passwordValidation,
-                      labelText: 'Password',
+                      labelText: localize?.translate('password') ?? '-',
                       obscureText: true,
                       onSaved: (val) => _userPassword = val,
                     ),
@@ -76,8 +78,8 @@ class _LoginFormState extends State<LoginForm> {
                     FlatButton(
                       onPressed: () {},
                       padding: EdgeInsets.zero,
-                      child: const Text(
-                        'Forgot password?',
+                      child: Text(
+                        localize?.translate('forgot_password') ?? '-',
                         style: TextStyle(
                           color: AppColors.primaryColor,
                           fontWeight: FontWeight.w600,
@@ -90,7 +92,11 @@ class _LoginFormState extends State<LoginForm> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .14,
                 ),
-                DefaultRaisedButton(onTap: _login, text: 'Login')
+                SizedBox(
+                  height: 16,
+                ),
+                DefaultRaisedButton(
+                    onTap: _login, text: localize?.translate('login') ?? '-')
               ],
             ),
           ),

@@ -48,7 +48,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  localize?.foodForEveryone ?? '-',
+                  localize?.translate('food_for_everyone') ?? '-',
                   style: GoogleFonts.roboto(
                     color: AppColors.colorWhite,
                     fontWeight: FontWeight.w800,
@@ -76,7 +76,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               child: DefaultRaisedButton(
                 onTap: () => Navigator.of(context)
                     ?.pushNamed(RouteGenerator.connexionScreen),
-                text: localize?.getStarted ?? '-',
+                text: localize?.translate('get_started') ?? '-',
                 backgroundColor: AppColors.colorWhite,
                 textColor: AppColors.primaryColor,
               ),
